@@ -1,5 +1,5 @@
 # raspi-lullaby-mediastation
-This code uses a bash script to start media files with a half random shutdown sleeptimer (e.g. for bedtime story, lullaby) with auto save. The last played song will be the starting point at the next boot. Tested on headless Rapsberry Pi 3 B+ running Raspbian with speakers over jack output.
+This code uses a bash script to start media files with a half random shutdown sleeptimer (e.g. for bedtime story, lullaby) with auto save. The last played song will be the starting point at the next boot. I wrote this script to have a simple headless media player that does not need any wireless connections.
 
 Hardware:
   * Raspberry Pi 3 B+
@@ -11,4 +11,4 @@ Software:
 How to use:
   * Setup your crontab to start the script after a short waiting period
     
-  <code>@reboot sleep 30 && /home/pi/Desktop/autostart_lullaby.sh</code>
+    <code>@reboot sleep 30 && /home/pi/Desktop/autostart_lullaby.sh</code>
