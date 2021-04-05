@@ -1,32 +1,26 @@
 #!/bin/bash
 ## This script starts the mplayer to play my lullaby songs. Every 
 ## evening the player should stop after 3 to 5 songs, save the last played song, then stop the raspi. 
-## 
 ## Per default this script starts the next song after the previous saved checkpoint. Include the script to the crontab file, to start on boot.
 
 #env for usage from command line
 export XDG_RUNTIME_DIR="/run/user/1000"
 export DISPLAY=:0.0
 
-# directories for media and logfiles
+# directories for logfiles, storage medium and media folder to play (DIR and MEDIA is separate here, but is added together to form the full path below)
 export LOGDIR="/home/pi/Documents/logs" 
 export DIR="/media/pi/MYUSB"
 export MEDIA="/songs/lullaby_songs/"
+
+#get input media to play (default is lullaby_songs)
+# usage in shell session: ./autostart_lullaby.sh "/songs/my favorite band"
+#export MEDIA="$@"
+export DIR="${DIR}${MEDIA}"
 
 export CHECKPOINT_OLD=""
 export COUNTER=0
 export STOP_COUNTER=""
 export START_COUNTER=""
-
-#get input media to play (default is lullaby_songs)
-#export MEDIA="$@"
-
-if [[ -n "$MEDIA" ]]; then
-       export DIR="${DIR}${MEDIA}"
-else
-       export MEDIA="/songs/lullaby_songs/"
-       export DIR="${DIR}${MEDIA}"
-fi
 
 # if the folder names have spaces, exchange them for "_" in logfile name
 export MEDIA_SED=$(echo $MEDIA | sed "s/\//\_/g" | sed "s/\ //g")
