@@ -11,4 +11,4 @@ Software:
 How to use:
   * Setup your crontab to start the script after a short waiting period
     
-  @reboot sleep 30 && /home/pi/Desktop/autostart_lullaby.sh
+  <code>@reboot sleep 30 && /home/pi/Desktop/autostart_lullaby.sh</code>
